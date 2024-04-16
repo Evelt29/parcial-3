@@ -1,6 +1,6 @@
 from .funciones import *
 class grafo():
-    def __init__(self) -> None:
+    def __init__(self,df) -> None:
         self.aristas = {}
         pass
     

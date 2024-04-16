@@ -4,3 +4,4 @@ def printDicc(dicc):
         for j in dicc[i]:
             print(f'\tRel: {j}, peso: {dicc[i][j]}')
     return ''
+
