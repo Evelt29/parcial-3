@@ -1,18 +1,18 @@
 from .funciones import *
 class grafo:
     def __init__(self):
-        self.Aristas = {}
+        self.aristas = {}
 
     def addVertice(self, vertice):
-        self.Aristas[vertice] = {}
+        self.aristas[vertice] = {}
 
     def addArista(self, origen, destino, peso):
-        if origen not in self.Aristas:
+        if origen not in self.aristas:
             self.addVertice(origen)
-        if destino not in self.Aristas:
+        if destino not in self.aristas:
             self.addVertice(destino)
-        self.Aristas[origen].update({destino: peso})
+        self.aristas[origen].update({destino: peso})
 
 
     def __str__(self):
-        return printDicc(self.Aristas)
+        return printDicc(self.aristas)
