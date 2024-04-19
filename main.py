@@ -18,7 +18,7 @@ print(grafoTest)
 
 
 
-
+# dejé el código pero no lo da, marca error en una línea donde no hay texto y no supe :((
 origenG = 'B'
 destinoG = 'H'
 path = {origenG: {'prev': None, '-': 0}}
