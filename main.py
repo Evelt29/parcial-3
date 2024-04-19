@@ -20,7 +20,7 @@ print(grafoTest)
 
 
 
-origenG = 'B'
+"""origenG = 'B'
 destinoG = 'H'
 path = {}
 visitados = []
@@ -55,5 +55,58 @@ for i in llaves:
 # fin for i
    
         
-print(path)
-exit()
+#print(path)
+print("path:")
+for t in path.keys():
+    print(f"{t}: {path[t]}")
+    
+#camino más corto
+camino_corto = []
+peso_total = 0
+actual = destinoG
+while actual != origenG:
+    anterior = path[actual].get('prev',None)
+    if path[actual]:
+        anterior = list(path[actual].keys())[0] # marca error en path
+    #anterior = list(path[actual].keys())[0]
+    peso_total += path[actual][anterior]
+    camino_corto.append(actual)
+    actual = anterior
+camino_corto.reverse()
+print(f"Camino corto: {camino_corto}")
+print(f"Peso total: {peso_total}")
+"""
+
+
+origenG = 'B'
+destinoG = 'H'
+path = {origenG: {'prev': None, '-': 0}}
+# 'prev' puse el prev para que devolviera el valor que tenía con el nodo anterior 
+visitados = []
+while destinoG not in visitados:
+    verticeCH = min((t,j) for t, j in path.items() if t not in visitados)[0] # para el nodo con menor distancia, t = vertice y j = el valor o peso
+    # vi que el min() ayuda a que te devuelva el valor más bajo, aquí sería el valor con menor peso
+    distanciaCH = path[verticeCH]['-']# distanciaCH = distancia más pequeña 
+    
+    visitados.append(verticeCH)
+    
+    for vecino, peso in grafoTest.aristas[verticeCH].items():
+        if vecino not in visitados:
+            newPeso = distanciaCH + peso
+            if vecino not in path or newPeso < path[vecino]['-']:
+                path[vecino] = {'prev': verticeCH, '-': newPeso}
+                
+if destinoG in visitados:
+    camino = []
+    Pesot = path[destinoG]['-']
+    actual = destinoG
+    while actual != origenG:
+        camino.append(actual)
+        actual = path[actual]['prev']
+    camino.append(origenG)
+    camino.reverse()
+    print(f"\033[33m camino corto:\033[0m {camino} ")
+    print(f"Peso total: {Pesot}")
+else:
+    print("NO HAY :( )")
+    
