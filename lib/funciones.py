@@ -18,8 +18,9 @@ aristas = [
     if pd.notna(peso) and peso != 0
 ]
 
-print(aristas)
-
+print('\033[32m Lista de relaciones:\033[0m')
+for arista in aristas:
+    print(f"{arista[0]} -> Destino: {arista[1]} : Peso {arista[2]}")
 
 
 
